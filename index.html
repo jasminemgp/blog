@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasmine Gonzalez's Design Blog</title>
+
+     <!-- Normalize CSS for browser compatability -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+    <!-- Add link to any google fonts used here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- My Styles -->
+    <link href="styles.css" rel="stylesheet">
+    
+    <!-- Meta tag for mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- My Script -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>blog</h1>
+        <h2 id="name-header">jasmine.gonzalez</h2>
+
+    </header>
+
+    <main class="split-layout">
+        <!-- Left Side Timeline -->
+        <aside class="blog-timeline" id="timeline-container">
+            <p class="status-msg">Loading entries...</p>
+        </aside>
+
+        <!-- Right Side Frame Panel -->
+        <section class="blog-display" id="active-post-container">
+            <button id="close-btn" aria-label="Close post">&times;</button>
+            <div id="post-view-content">
+                <p class="status-msg">Select an entry from the timeline to read.</p>
+            </div> 
+        </section>
+    </main>
+
+
+    <footer class="marquee-container">
+        <div class="marquee-track">
+            <!-- First Loop Set -->
+            <span class="marquee-text brand-blue">☆⌒(>。<)</span>
+            <span class="marquee-text">jasmine is typing ...</span>
+            <span class="marquee-text">jasmine is typing ...</span>
+            <span class="marquee-text">jasmine is typing ...</span>
+            <span class="marquee-text">jasmine is typing ...</span>
+            <span class="marquee-text">jasmine is typing ...</span>
+            <span class="marquee-text">jasmine is typing ...</span>
+            <span class="marquee-text">jasmine is typing ...</span>
+            <span class="marquee-text">jasmine is typing ...</span>
+            
+            <!-- Second Loop Set (Duplicates for seamless wrapping) -->
+            <span class="marquee-text brand-blue" aria-hidden="true">☆⌒(>。<)</span>
+            <span class="marquee-text" aria-hidden="true">jasmine is typing ...</span>
+            <span class="marquee-text" aria-hidden="true">jasmine is typing ...</span>
+            <span class="marquee-text" aria-hidden="true">jasmine is typing ...</span>
+            <span class="marquee-text" aria-hidden="true">jasmine is typing ...</span>
+            <span class="marquee-text" aria-hidden="true">jasmine is typing ...</span>
+            <span class="marquee-text" aria-hidden="true">jasmine is typing ...</span>
+            <span class="marquee-text" aria-hidden="true">jasmine is typing ...</span>
+            <span class="marquee-text" aria-hidden="true">jasmine is typing ...</span>
+        </div>
+    </footer>
+
+
+    
+</body>
+</html>

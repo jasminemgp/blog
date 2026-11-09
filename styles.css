@@ -1,0 +1,357 @@
+:root {
+    --text-color: #1a1a1a;
+    --accent-color: #a3a3a3;
+    --bg-modal: #ffffff;
+    --brand-blue: #1425DF;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: lighter;
+    color: var(--text-color);
+    margin: 0;
+    padding: 40px 40px;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
+
+header {
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: 325;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0 0 8px 0;
+    text-transform: lowercase;
+    letter-spacing: -1px;
+}
+
+#name-header {
+    font-family: 'Times New Roman MT Std', Times, serif;
+    font-weight: lighter;
+    color: var(--brand-blue);
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+
+    /* 1. Added relative position to anchor the upcoming GIF relative to this text block */
+    position: relative; 
+    display: inline-block; /* Keeps the hover zone wrapped tight around the letters */
+    cursor: pointer;
+}
+
+/* 2. Hidden default state for the GIF container */
+#name-header::after {
+    content: "";
+    display: inline-block;
+    
+    /* Dimensions and source file for your hover GIF */
+    width: 127px; 
+    height: 127px;
+    background-image: url('images/me.gif'); /* Replace with your actual gif filename */
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 16px 16px 0px 16px; /* Optional: Rounded corners for a softer look */
+    
+    /* Absolute alignment settings */
+    position: absolute;
+    left: 105%; /* Positions the image slightly to the right of your text string */
+    top: 50%;
+    transform: translateY(-70%); /* Centers the image vertically against the text alignment */
+    
+    /* Smooth fading microinteraction transition settings */
+    opacity: 0;
+    pointer-events: none; /* Prevents the invisible image zone from accidentally capturing cursor clicks */
+    transition: opacity 0.25s ease-in-out;
+}
+
+/* 3. Revealed hover state rules */
+#name-header:hover::after {
+    opacity: 1;
+}
+
+
+
+/* ---------------------------------- */
+/* Permanent Borderless Split Layout  */
+/* ---------------------------------- */
+.split-layout {
+    display: flex;
+    height: 70vh;
+    padding-top: 8px;
+}
+
+.blog-timeline {
+    width: 40%; /* Left half of desktop layouts */
+    overflow-y: auto;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+.blog-display {
+    width: 60%; /* Right half of desktop layouts */
+    overflow-y: auto;
+    padding-left: 100px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Timeline Interactive Date Links */
+.timeline-item {
+    margin-bottom: 8px;
+    cursor: pointer;
+    display: block;
+}
+
+.timeline-date {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease, font-style 0.2s ease;
+    display: inline-block;
+}
+
+/* Hover State: Italicizes and shifts to Brand Blue */
+.timeline-item:hover .timeline-date {
+    color: var(--brand-blue);
+}
+
+/* Active State: Firmly locks brand blue color while viewing post */
+.timeline-date.active-date {
+    color: var(--brand-blue) !important;
+}
+
+/* Close/Back Button hidden on web browsers desktop viewports */
+#close-btn {
+    display: none; 
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--accent-color);
+    font-size: 2rem;
+    z-index: 10;
+}
+
+/* Reading View Layout */
+.post-view {
+    animation: fadeInPost 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-right: 16px;
+}
+
+@keyframes fadeInPost {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.post-view h2 {
+    font-size: 2.4rem;
+    margin: 0 0 12px 0;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.post-view .post-date {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 30px;
+    font-weight: 200;
+}
+
+.post-view p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-weight: 300;
+    max-width: 680px;
+}
+
+.post-view img {
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 28px;
+    display: block;
+}
+
+/* Status Message Styling */
+.post-view p br {
+    display:block;
+    content:"";
+    margin: 8px 0;
+}
+
+.status-msg {
+    color: var(--brand-blue);
+    font-style: italic;
+    font-weight: 300;
+}
+
+footer {
+    margin-top: 60px;
+    padding-top: 25px;
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+}
+
+/* Hide scrollbars to keep layout completely seamless */
+.blog-timeline::-webkit-scrollbar,
+.blog-display::-webkit-scrollbar {
+    display: none;
+}
+
+/* ---------------------------------- */
+/* Infinite Ticker Marquee Footer     */
+/* ---------------------------------- */
+.marquee-container {
+    margin-top: 60px;
+    padding: 16px 0;
+    overflow: hidden; /* Masks out text outside your screen boundaries */
+    white-space: nowrap; /* Forces all text strings into a single line */
+    display: flex;
+    width: 100%;
+}
+
+.marquee-track {
+    display: inline-block;
+    animation: marqueeScroll 50s linear infinite; /* Increased to 45 seconds for a slower, calmer crawl */
+}
+
+/* Individual Text Strings inside Track Elements */
+.marquee-text {
+    font-size: 1.2rem;
+    font-family: 'Times New Roman MT Std', Times, serif;
+    font-style: italic;
+    color: var(--accent-color); /* Default grey color settings */
+    text-transform: lowercase;
+    letter-spacing: 0.75px;
+    margin-right: 16px; /* Increased separation padding between phrases slightly */
+    display: inline-block;
+}
+
+/* Unique Brand Blue Highlight Identifier Rule */
+.marquee-text.brand-blue {
+    color: var(--brand-blue);
+    font-weight: 400;
+}
+
+/* Keyframe Math: Moves content entirely leftward to create a loop */
+@keyframes marqueeScroll {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+.post-audio-player {
+    width: 100%;
+    max-width: 375px;
+    margin-top: 0px;
+    margin-bottom: 24px;
+    display: block;
+    outline: none;
+}
+
+
+
+
+/* ---------------------------------- */
+/* Mobile Screen Pop-Up Modal Setup   */
+/* ---------------------------------- */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    .post-header-image {
+    max-height: 200px; /* Scales down heights to fit tightly inside compact mobile overlays */
+    margin-bottom: 15px;
+    }
+
+
+    .split-layout {
+        display: block;
+        height: auto;
+        padding-top: 20px;
+    }
+    
+    .blog-timeline, .blog-display {
+        width: 100%;
+        padding: 0;
+    }
+
+    .timeline-item {
+        margin-bottom: 20px;
+    }
+
+    /* Transform the right panel into an absolute center modal overlay on mobile */
+    .blog-display {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 88%;
+        max-width: 500px;
+        max-height: 75vh;
+        background-color: var(--bg-modal);
+        z-index: 1000;
+        padding: 45px 25px 30px 25px;
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .blog-display.mobile-open {
+        display: block;
+        animation: modalScaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes modalScaleUp {
+        from { opacity: 0; transform: translate(-50%, -46%) scale(0.96); }
+        to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    #close-btn {
+        display: block; /* Visible exit trigger inside touch modals */
+        top: 15px;
+        right: 20px;
+    }
+
+    .post-view h2 {
+        font-size: 1.8rem;
+    }
+
+    .split-layout::before {
+        content: '';
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(2px);
+        z-index: 999;
+    }
+    
+    body.has-open-modal .split-layout::before {
+        display: block;
+    }
+
+    .post-audio-player {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
